@@ -1,3 +1,5 @@
+#ifndef LISTASIMPLE_H
+#define LISTASIMPLE_H
 #include <iostream>
 using namespace std;
 
@@ -9,10 +11,10 @@ struct nodo {
 
 template <class T>
 class Lista{
-	
+
 	nodo<T> *cab;
 	int tam;
-	
+
 	public:
 		Lista(){
 			tam = 0;
@@ -48,7 +50,7 @@ int Lista<T>::tamanoLista(){return tam;}
 template <class T>
 void Lista<T>::insertarInicio(T infoNueva){
 	nodo<T> *nuevo = new nodo <T>;
-	nuevo=cab;
+	cab=nuevo;
 }
 
 template <class T>
@@ -65,10 +67,23 @@ void Lista<T>::insertarFinal(T infoNueva){
 
 template <class T>
 void Lista<T>::insertar(T infoNueva, int pos){
-	if(pos>tam){
+
+/*	if(pos>tam){
+		std::cout << "Coefwe" << '\n';
 		insertarFinal(infoNueva);
+	//AQUI ENTRARA UNICAMENTE CON EL 0 SI SE LE PASA COMO POSICION 1 ENTRA AL IF DE ARRIBA Y DA ERROR
 	}else if(pos<=1){
+		insertarInicio(infoNueva);*/
+
+/*Corregido*/
+/* Se debe definir si la lista empieza por 0 o 1, en caso de que empiece po 0 queda asi*/
+/* En todo caso es mejor invertir los if en caso de que se quiera que la lista empiece por 1*/
+
+	if(pos==0){
+		std::cout << "Coefwe" << '\n';
 		insertarInicio(infoNueva);
+	}else if(pos>tam){
+		insertarFinal(infoNueva);
 	}else{
 		nodo<T> *nuevo = new nodo <T>, *aux;
 		nuevo->info=infoNueva;
@@ -78,6 +93,7 @@ void Lista<T>::insertar(T infoNueva, int pos){
 		}
 		nuevo->sig=aux->sig;
 		aux->sig=nuevo;
+		tam++;
 	}
 }
 
@@ -106,3 +122,5 @@ void Lista<T>::imprimirLista(){
 		aux=aux->sig;
 	}
 }
+
+#endif
