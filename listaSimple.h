@@ -111,7 +111,6 @@ void Lista<T>::insertar(T infoNueva, int pos){
 		}
 		modificado = aux->sig;
 		modificado->info = infoNueva;
-		tam++;
 	}
 }
 
@@ -130,6 +129,7 @@ void Lista<T>::eliminar(int pos){
 		aux1 = aux1->sig; //Se avanza aux1 al elemento 1
 		cab = aux1; //La nueva cabeza sera el elemento 1
 		delete aux2; //Se elimina el elemento 0
+		tam--
 	}else{
 		for(int i=1;i<pos;i++){
 			aux1=aux1->sig;
