@@ -24,8 +24,20 @@ int main(){
 	lis.insertarFinal(5);
 	//TAM = 5
 
-	lis.insertar(20,1);
+	std::cout << "ARREGLO SIN INSERTAR NADA" << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
+	}
 
+	lis.insertar(20,1);
+	lis.insertar(21,4);
+
+	std::cout << "ARREGLO CON DOS ELEMENTOS INSERTADOS" << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
+	}
+	lis.eliminar(6);
+	std::cout << "LUEGO DE ELIMINAR LA POSICION " << '\n';
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}

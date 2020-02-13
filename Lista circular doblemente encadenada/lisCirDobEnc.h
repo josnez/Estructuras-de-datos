@@ -108,19 +108,60 @@ void Lista<T>::insertar(T infoNueva, int pos){
 
 template <class T>
 void Lista<T>::eliminar(int pos){
-	nodo<T> *ult, *seg;
-	nodo<T> *aux = cab;
-	for(int i=1;i<pos;i++){
-		aux=aux->sig;
+	nodo<T> *auxA = cab;
+	nodo<T> *auxB = cab;
+	//Se elimina la cabeza
+	if(pos == 0){
+		//El elemento a eliminar
+		auxB = cab;
+		//Se almacena el elemento final
+		auxA =  cab ->ant;
+		//Se actualiza la cabeza
+		cab = cab ->sig;
+		cab ->ant = auxA;
+		//Se actualiza el ultimo elemento
+		auxA ->sig = cab;
+
+		delete auxB;
+		tam --;
+		//Se elimina un elemento de en medio
+	}else if (pos < tamanoLista()){
+		//Se sube hasta el nodo anterior a ser eliminado
+		for(int i=1;i<pos;i++){
+			auxA=auxA->sig;
+			auxB=auxB->sig;
+		}
+		//Se sube auxB uno mas quedando en el nodo a eliminar
+		auxB=auxB->sig;
+
+		//Revinculacion de ida
+		auxA->sig = auxB->sig;
+
+		//Revinculacion de vuelta
+		//Se salta al nodo siguiente del que se va a eliminar y se modifica su anterior
+		(auxB->sig)->ant = auxA;
+
+		//Se elimina auxB
+		delete auxB;
+		tam--;
+
+		//Se elimina el ultimo elemento
+	}else{
+		//Elemento a borrar
+		auxA =  cab->ant;
+
+		//Se sube auxB hasta el penultimo nodo
+		for(int i=1;i<tamanoLista();i++){
+			auxB=auxB->sig;
+		}
+		//Se actualizan los vinculos
+		auxB->sig =  cab;
+		cab->ant = auxB;
+
+		//Se elimina el elemento
+		delete auxA;
+		tam--;
 	}
-	seg = aux -> sig;
-	ult = aux -> ant;
-	ult -> sig = seg;
-	seg -> ant = ult;
-	delete aux;
-	tam--;
-	if(pos == 1)
-	cab = seg;
 }
 
 template <class T>
