@@ -46,10 +46,11 @@ int Lista<T>::tamanoLista(){
 template <class T>
 void Lista<T>::insertarInicio(T infoNueva){
 	nodo<T> *nuevo = new nodo <T>;
-	nuevo -> sig = NULL;
-	nuevo -> ant = NULL;
-	nuevo -> info =  infoNueva;
 	cab = nuevo;
+
+	nuevo -> sig = cab;
+	nuevo -> ant = cab;
+	nuevo -> info =  infoNueva;
 	tam++;
 }
 
@@ -65,6 +66,7 @@ void Lista<T>::insertarFinal(T infoNueva){
 	nuevo -> ant = aux;
 	nuevo -> sig = cab;
 	nuevo -> info = infoNueva;
+	cab -> ant = nuevo;
 	tam++;
 }
 
@@ -75,15 +77,30 @@ void Lista<T>::insertar(T infoNueva, int pos){
 	}else if(pos>=tam){
 		insertarFinal(infoNueva);
 	}else{
-		nodo<T> *modificado;
-		nodo<T> *aux ;
-		aux=cab; //El apuntador aux se iguala con el apuntador que apunta a la cabeza de la lista
+		nodo<T> *nuevo = new nodo<T>;
+		nodo<T> *auxA;
+		nodo<T> *auxB;
+		auxA=cab; //El apuntador aux se iguala con el apuntador que apunta a la cabeza de la lista
+		auxB=cab;
 		for(int i=1;i<pos;i++){
-			aux=aux->sig;
+			auxA=auxB->sig;
+			auxB=auxB->sig;
 		}
-		modificado = aux;
-		modificado->info = infoNueva;
+		//Se avanza auxB uno mas
+		auxB=auxB->sig;
+
+
+
+		nuevo->info = infoNueva;
+		//Se relacionan de ida
+		nuevo->sig = auxB;
+		auxA->sig = nuevo;
+
+		//Se relacionan de vuelta
+		nuevo->ant = auxA;
+		auxB->ant = nuevo;
 		tam++;
+
 
 
 	}

@@ -24,12 +24,18 @@ int main(){
 	lis.insertarFinal(5);
 	//TAM = 5
 
-	lis.insertar(2,3);
-
+	lis.insertar(20,1);
 
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}
+
+
+
+
+	/*for (int j = 0; j < lis.tamanoLista(); j++) {
+		cout << "Posicion: " << j <<", Valor: "<<lis.getInfoPos(j)<<endl;
+	}*/
 
 
 
