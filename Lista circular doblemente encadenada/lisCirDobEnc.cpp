@@ -28,6 +28,7 @@ int main(){
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}
+	std::cout  << '\n';
 
 	lis.insertar(20,1);
 	lis.insertar(21,4);
@@ -36,28 +37,26 @@ int main(){
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}
-	lis.eliminar(6);
-	std::cout << "LUEGO DE ELIMINAR LA POSICION " << '\n';
+	std::cout  << '\n';
+	lis.eliminar(0);
+	std::cout << "LUEGO DE ELIMINAR LA CABEZA " << '\n';
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}
+	std::cout  << '\n';
 
-
-
-
-	/*for (int j = 0; j < lis.tamanoLista(); j++) {
-		cout << "Posicion: " << j <<", Valor: "<<lis.getInfoPos(j)<<endl;
-	}*/
-
+	lis.eliminar(3);
+	std::cout << "LUEGO DE ELIMINAR LA POSICION 3 " << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
+	}
+	std::cout  << '\n';
 
 
 	//VALIDACION NATURALEZA CIRCULAR
 	//Ya que el metodo imprimir lista se detiene hasta que encuentra un NULL se dara un ciclo infinito
 	//pues el elemento final apunta a la cabeza y no a null
 	//lis.imprimirLista();
-
-	//Si se desea obtener un elemento utlizar getPos()
-	//lis.getPos(0);
 
 
 	//EN CASO DE QUE SE USE INSERTAR EN UNA POSICION NO EXISTENTE SE UTILIZARA insertarFinal
