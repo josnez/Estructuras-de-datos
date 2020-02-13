@@ -14,20 +14,20 @@ template <class T>
 class Lista{
 	nodo<T> *cab;
 	int tam;
-	
-	public:
-		Lista(){
-			cab = NULL;
-			tam = 0;
-		}
-		bool listaVacia();
-		int tamanoLista();
-		void insertar(T infoNueva, int pos); //USADO SOLO PARA MODIFICAR EXISTENTES
-		void insertarFinal(T infoNueva); //USADO PARA AGREGAR NUEVOS
-		void insertarInicio(T infoNueva);//USADO PARA AGREGAR UNICAMENTE EL INICIAL
-		void eliminar(int pos);
-		void imprimirLista();
-		void getInfoPos(int pos);
+
+public:
+	Lista(){
+		cab = NULL;
+		tam = 0;
+	}
+	bool listaVacia();
+	int tamanoLista();
+	void insertar(T infoNueva, int pos); //USADO SOLO PARA MODIFICAR EXISTENTES
+	void insertarFinal(T infoNueva); //USADO PARA AGREGAR NUEVOS
+	void insertarInicio(T infoNueva);//USADO PARA AGREGAR UNICAMENTE EL INICIAL
+	void eliminar(int pos);
+	void imprimirLista();
+	void getInfoPos(int pos);
 };
 
 template <class T>
@@ -45,24 +45,11 @@ int Lista<T>::tamanoLista(){
 
 template <class T>
 void Lista<T>::insertarInicio(T infoNueva){
-	if(listaVacia()){
-		nodo<T> *nuevo = new nodo <T>;
-		nuevo -> sig = NULL;
-		nuevo -> ant = NULL;
-		nuevo -> info =  infoNueva;
-		cab = nuevo;
-	}else{
-		nodo<T> *nuevo, *aux = new nodo <T>;
-		aux = cab;
-		for (int i = 1; i < tam; i++) {
-			aux = aux -> sig;
-		}
-		aux -> sig = nuevo;
-		nuevo -> sig = cab;
-		nuevo -> ant = cab -> ant;
-		cab -> ant = nuevo;
-		cab = nuevo;
-	}
+	nodo<T> *nuevo = new nodo <T>;
+	nuevo -> sig = NULL;
+	nuevo -> ant = NULL;
+	nuevo -> info =  infoNueva;
+	cab = nuevo;
 	tam++;
 }
 
@@ -90,7 +77,7 @@ void Lista<T>::insertar(T infoNueva, int pos){
 		insertarFinal(infoNueva);
 		tam++;
 	}else{
-		nodo<T> *modificado; 
+		nodo<T> *modificado;
 		nodo<T> *aux ;
 		aux=cab; //El apuntador aux se iguala con el apuntador que apunta a la cabeza de la lista
 		for(int i=1;i<pos;i++){
@@ -124,7 +111,7 @@ void Lista<T>::eliminar(int pos){
 	delete aux;
 	tam--;
 	if(pos == 1)
-		cab = seg;
+	cab = seg;
 }
 
 template <class T>

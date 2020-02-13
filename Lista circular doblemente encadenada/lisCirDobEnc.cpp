@@ -1,7 +1,7 @@
 /*
 *LISTA CIRCULAR DOBLEMENTE ENCADENADA
 *Santiago Rincon Robelto - 20172020084
-*Josue Alexander Nuñez Prada - 20172020071
+*Josue Alexander Nuï¿½ez Prada - 20172020071
 */
 
 #include "lisCirDobEnc.h"
@@ -13,30 +13,19 @@ int main(){
 	Lista<int> lis;
 
 	//POS 1
-	lis.insertarInicio(2);
-	lis.getInfoPos(1);
+	lis.insertarInicio(1);
 	//POS 2
-	lis.insertarFinal(3);
-	lis.getInfoPos(2);
+	lis.insertarFinal(2);
 	//POS 3
-	lis.insertarFinal(4);
-	lis.getInfoPos(3);	
+	lis.insertarFinal(3);
 	//POS 4
 	lis.insertarFinal(5);
-	lis.getInfoPos(4);
 	//POS 5
 	lis.insertarFinal(6);
-	lis.getInfoPos(5);
 	//TAM = 5
-	cout << "El tamaño de la lista es: "<<lis.tamanoLista() << '\n';
-	
-	lis.insertar(52,2);
-	lis.getInfoPos(6);
-	cout << "El tamaño de la lista es: "<<lis.tamanoLista() << '\n';
-	
-	lis.eliminar(2);
-	lis.getInfoPos(3);
-	
+	lis.getInfoPos(0);
+
+
 
 	//VALIDACION NATURALEZA CIRCULAR
 	//Ya que el metodo imprimir lista se detiene hasta que encuentra un NULL se dara un ciclo infinito
