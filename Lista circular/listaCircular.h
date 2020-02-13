@@ -163,7 +163,7 @@ void Lista<T>::imprimirLista(){
 		aux=aux->sig;
 	}
 	if(aux->sig == NULL){
-		std::cout << "NULL :c" << '\n';
+		cout << "NULL :c" << '\n';
 	}
 
 }

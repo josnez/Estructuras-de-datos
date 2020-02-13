@@ -1,7 +1,7 @@
 /*
 *LISTA SIMPLE
 *Santiago Rincon Robelto - 20172020084
-*Josue Alexander NuÃ±ez Prada - 20172020071
+*Josue Alexander Nuñez Prada - 20172020071
 */
 
 #include "listaCircular.h"
