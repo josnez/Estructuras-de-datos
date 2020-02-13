@@ -12,19 +12,21 @@ using namespace std;
 int main(){
 	Lista<int> lis;
 
-	//POS 1
+	//POS 0
 	lis.insertarInicio(1);
+	//POS 1
+	lis.insertar(2,1);
 	//POS 2
-	lis.insertarFinal(2);
+	lis.insertar(3,2);
 	//POS 3
-	lis.insertarFinal(3);
+	lis.insertar(4,3);
 	//POS 4
-	lis.insertarFinal(4);
-	//POS 5
 	lis.insertarFinal(5);
 	//TAM = 5
 
-	//
+	lis.insertar(2,3);
+
+
 	for (int i = 0; i < lis.tamanoLista(); i++) {
 		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
 	}

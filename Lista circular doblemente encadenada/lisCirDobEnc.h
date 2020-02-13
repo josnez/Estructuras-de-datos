@@ -84,14 +84,8 @@ void Lista<T>::insertar(T infoNueva, int pos){
 		modificado = aux;
 		modificado->info = infoNueva;
 		tam++;
-		// -----
-		/*
-		nodo<T> *nuevo = new nodo<T>;
-		nuevo -> info = infoNueva;
-		nuevo -> ant = aux;
-		aux = aux -> sig;
-		nuevo -> sig = aux;
-		*/
+
+
 	}
 }
 
