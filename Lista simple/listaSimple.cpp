@@ -13,20 +13,44 @@ int main(){
 	Lista<int> lis;
 
 	//POS 0
-	lis.insertarInicio(2);
+	lis.insertarInicio(1);
 	//POS 1
-	lis.insertarFinal(3);
+	lis.insertar(2,1);
 	//POS 2
-	lis.insertarFinal(4);
+	lis.insertar(3,2);
 	//POS 3
-	lis.insertarFinal(5);
+	lis.insertar(4,3);
 	//POS 4
-	lis.insertarFinal(6);
+	lis.insertarFinal(5);
+	//TAM = 5
 
+	std::cout << "ARREGLO SIN INSERTAR NADA" << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getPos(i)<<endl;
+	}
+	std::cout  << '\n';
+
+	lis.insertar(20,1);
+	lis.insertar(21,4);
+
+	std::cout << "ARREGLO CON DOS ELEMENTOS INSERTADOS" << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getPos(i)<<endl;
+	}
+	std::cout  << '\n';
 	lis.eliminar(0);
-	lis.insertar(52,2);
+	std::cout << "LUEGO DE ELIMINAR LA CABEZA " << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getPos(i)<<endl;
+	}
+	std::cout  << '\n';
 
-	lis.imprimirLista();
+	lis.eliminar(3);
+	std::cout << "LUEGO DE ELIMINAR LA POSICION 3 " << '\n';
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getPos(i)<<endl;
+	}
+	std::cout  << '\n';
 
 
 	//EN CASO DE QUE SE USE INSERTAR EN UNA POSICION NO EXISTENTE SE UTILIZARA insertarFinal
