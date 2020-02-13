@@ -19,11 +19,15 @@ int main(){
 	//POS 3
 	lis.insertarFinal(3);
 	//POS 4
-	lis.insertarFinal(5);
+	lis.insertarFinal(4);
 	//POS 5
-	lis.insertarFinal(6);
+	lis.insertarFinal(5);
 	//TAM = 5
-	lis.getInfoPos(0);
+
+	//
+	for (int i = 0; i < lis.tamanoLista(); i++) {
+		cout << "Posicion: " << i <<", Valor: "<<lis.getInfoPos(i)<<endl;
+	}
 
 
 

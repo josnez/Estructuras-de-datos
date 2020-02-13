@@ -27,7 +27,7 @@ public:
 	void insertarInicio(T infoNueva);//USADO PARA AGREGAR UNICAMENTE EL INICIAL
 	void eliminar(int pos);
 	void imprimirLista();
-	void getInfoPos(int pos);
+	T getInfoPos(int pos);
 };
 
 template <class T>
@@ -72,10 +72,8 @@ template <class T>
 void Lista<T>::insertar(T infoNueva, int pos){
 	if(pos==0){
 		insertarInicio(infoNueva);
-		tam++;
 	}else if(pos>=tam){
 		insertarFinal(infoNueva);
-		tam++;
 	}else{
 		nodo<T> *modificado;
 		nodo<T> *aux ;
@@ -129,12 +127,12 @@ void Lista<T>::imprimirLista(){
 }
 
 template <class T>
-void Lista<T>::getInfoPos(int pos){
+T Lista<T>::getInfoPos(int pos){
 	nodo<T> *aux;
 	aux = cab;
-	for (int i = 1; i < pos; i++) {
+	for (int i = 0; i < pos; i++) {
 		aux=aux->sig;
 	}
-	cout<<aux->info<<endl;
+	return aux->info;
 }
 #endif
