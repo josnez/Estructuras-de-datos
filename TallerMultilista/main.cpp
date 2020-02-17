@@ -46,6 +46,36 @@ void ordenarPorCarreraSistemas(){
 		auxNom = estudiantes[auxNom].sigCarr;
 	}
 }
+void ordenarPorCarreraIndustrial(){
+	int auxNom = lisCabeceras[2].pos;
+
+	cout<<"\n Ordenado por carrera industrial: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigCarr;
+	}
+}
+void ordenarPorCarreraElectrica(){
+	int auxNom = lisCabeceras[3].pos;
+
+	cout<<"\n Ordenado por carrera electrica: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigCarr;
+	}
+}
+void ordenarPorCarreraCatastral(){
+	int auxNom = lisCabeceras[4].pos;
+
+	cout<<"\n Ordenado por carrera catastral: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigCarr;
+	}
+}
 
 int main(){
 	string a = "a";
@@ -150,10 +180,10 @@ int main(){
 			if(auxCarr==-1)
 			lisCabeceras[2].pos=i;
 			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
+				auxCarr =lisCabeceras[2].pos;
+				estudiantes[i].sigCarr=auxCarr;
+				lisCabeceras[2].pos=i;
+
 			}
 		}
 		else if(carrera=="Electrica"){
@@ -161,10 +191,10 @@ int main(){
 			if(auxCarr==-1)
 			lisCabeceras[3].pos=i;
 			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
+				auxCarr =lisCabeceras[3].pos;
+				estudiantes[i].sigCarr=auxCarr;
+				lisCabeceras[3].pos=i;
+
 			}
 		}
 		else if(carrera=="Catastral"){
@@ -172,10 +202,10 @@ int main(){
 			if(auxCarr==-1)
 			lisCabeceras[4].pos=i;
 			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
+				auxCarr =lisCabeceras[4].pos;
+				estudiantes[i].sigCarr=auxCarr;
+				lisCabeceras[4].pos=i;
+
 			}
 		}
 
@@ -245,6 +275,11 @@ int main(){
 
 	ordenarPorNombre();
 	ordenarPorCarreraSistemas();
+	ordenarPorCarreraIndustrial();
+	ordenarPorCarreraElectrica();
+	ordenarPorCarreraCatastral();
+
+
 	//ordenarPorEdad();
 
 	return 0;
