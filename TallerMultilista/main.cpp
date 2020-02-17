@@ -3,8 +3,8 @@
 using namespace std;
 
 struct cabecera{
-		string caracteristica;
-		int pos;
+	string caracteristica;
+	int pos;
 };
 cabecera lisCabeceras[10];
 
@@ -12,13 +12,17 @@ struct info{
 	string nom, carrera, hobby;
 	int edad, sigNom, sigCarr, sigHob, sigEdad;
 };
+//VARIABLE GLOBAL
 info *estudiantes;
 
 void ordenarPorNombre(){
+
 	int auxNom = lisCabeceras[0].pos;
-	cout<<"\n Ordenado por nombre: "<<endl;
-	while(auxNom =! -1){
-		cout<<estudiantes[auxNom].nom<<endl;
+
+	cout<<"\n Ordenado por nombre: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
 		auxNom = estudiantes[auxNom].sigNom;
 	}
 }
@@ -31,53 +35,82 @@ void ordenarPorEdad(){
 		auxEdad = estudiantes[auxEdad].sigEdad;
 	}
 }
-	
+
+
 int main(){
-		
+
+
+
+	//DECLARACION DE LAS CABEZAS
 	lisCabeceras[0].caracteristica = "Nombre";
-	lisCabeceras[1].caracteristica = "Ing.Sistemas";
-	lisCabeceras[2].caracteristica = "Ing.Industrial";
-	lisCabeceras[3].caracteristica = "Ing.Electrica";
-	lisCabeceras[4].caracteristica = "Ing.Catastral";
+	lisCabeceras[1].caracteristica = "Sistemas";
+	lisCabeceras[2].caracteristica = "Industrial";
+	lisCabeceras[3].caracteristica = "Electrica";
+	lisCabeceras[4].caracteristica = "Catastral";
 	lisCabeceras[5].caracteristica = "Danza";
 	lisCabeceras[6].caracteristica = "Natacion";
 	lisCabeceras[7].caracteristica = "Beisbol";
 	lisCabeceras[8].caracteristica = "Basquet";
 	lisCabeceras[9].caracteristica = "Edad";
-	
+
+	//SE LLENAN TODAS LAS CABEZAS CON -1
 	for(int i=0; i<10; i++){
-     	lisCabeceras[i].pos=-1;	
+		lisCabeceras[i].pos=-1;
 	}
-	
+
+	//SE PIDE LA CANTIDAS DE ESTUDIANTES A USAR
 	cout<<"Digite cuantos estudiantes va a ingresar: "<<endl;
 	int numEst;
 	cin>>numEst;
+
+	//SE DA A DONDE APUNTAR AL APUNTADO (EL APUNTADOR ES GLOBAL)
 	estudiantes = new info[numEst];
-	
+
+	//VARIABLE AUX DONDE SE ALMACENARA EL NOMBRE DEL ESTUDIANTEs
+	string nombreEst;
+	int auxPos;
+
+	//SE UTILIZA EL -1 COMO POSICION DE CONTROL Y NO EL 0 COMO EN CLASE
 	for(int i=0; i<numEst; i++){
+		//SE LLENAN TODOS LOS SIGUIENTES CON NADIE A QUIEN SEGUIR
 		estudiantes[i].sigCarr=-1;
 		estudiantes[i].sigEdad=-1;
 		estudiantes[i].sigHob=-1;
 		estudiantes[i].sigNom=-1;
-		
-		/*string nombreEst;
-		cout<<"Nombre: "; cin>>nombreEst;
-		
+
+		//SE PIDE EL NOMBRE POR CONSOLA
+		cout<<"Nombre: ";
+		cin>>nombreEst;
+
+		//SE LLENA EL ARREGLO ESTUDIANTES CON TODOS SUS DATOS (ES DE TIPO INFO)
 		estudiantes[i].nom = nombreEst;
-		int auxPos = lisCabeceras[0].pos;
+
+		//SE OBTIENE LA PRIMERA POSICION DEL NOMBRE EN CABECERA
+		auxPos = lisCabeceras[0].pos;
+
+		//SI NO HAY NADA DEFINIDO EN LA CABECERA
 		if(auxPos==-1){
 			lisCabeceras[0].pos=i;
-		}else if(estudiantes[auxPos].nom>nombreEst){		
+			estudiantes[i].sigNom = -1;
+			//VERIFICAR LA COMPARACION PUEDE SER UN PROBLEMA
+
+		//SI EL VALOR ACTUAL ES MAYOR AL REGISTRADO, SI HAY UNA W Y SE METE UNA Z ENTRA
+		}else if((estudiantes[auxPos].nom).compare(nombreEst)<=0){
+			std::cout << "ENTRO" << '\n';
 			lisCabeceras[0].pos=i;
 			estudiantes[i].sigNom=auxPos;
+		//SI EL VALOR ACTUAL ES MENOR AL REGISTRADO SI HAY UNA W Y SE METE UNA A ENTRA
+		//ESTA PARTE ES LA QUE FALLA
 		}else{
-			while(estudiantes[auxPos].nom<nombreEst){
+			while((estudiantes[auxPos].nom).compare(nombreEst)<0){
 				auxPos = estudiantes[auxPos].sigNom;
 			}
 			estudiantes[i].sigNom = estudiantes[auxPos].sigNom;
 			estudiantes[auxPos].sigNom = i;
-		}*/
-		
+
+		}
+
+/*
 		string carrera;
 		int auxCarr;
 		cout<<"Carrera: "; cin>>carrera;
@@ -85,7 +118,7 @@ int main(){
 		if(carrera=="Ing.Sistemas"){
 			auxCarr = lisCabeceras[1].pos;
 			if(auxCarr==-1)
-				lisCabeceras[1].pos=i;
+			lisCabeceras[1].pos=i;
 			else{
 				while(estudiantes[auxCarr].sigCarr=!-1){
 					auxCarr = estudiantes[auxCarr].sigCarr;
@@ -96,29 +129,7 @@ int main(){
 		else if (carrera == "Ing.Industrial"){
 			auxCarr = lisCabeceras[2].pos;
 			if(auxCarr==-1)
-				lisCabeceras[2].pos=i;
-			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
-			}	
-		}
-	 	else if(carrera=="Ing.Electrica"){
-	 		auxCarr = lisCabeceras[3].pos;
-			if(auxCarr==-1)
-				lisCabeceras[3].pos=i;
-			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
-			}	
-		}
-		else if(carrera=="Ing.Catastral"){
-			auxCarr = lisCabeceras[4].pos;
-			if(auxCarr==-1)
-				lisCabeceras[4].pos=i;
+			lisCabeceras[2].pos=i;
 			else{
 				while(estudiantes[auxCarr].sigCarr=!-1){
 					auxCarr = estudiantes[auxCarr].sigCarr;
@@ -126,12 +137,34 @@ int main(){
 				estudiantes[auxCarr].sigCarr = i;
 			}
 		}
-		
+		else if(carrera=="Ing.Electrica"){
+			auxCarr = lisCabeceras[3].pos;
+			if(auxCarr==-1)
+			lisCabeceras[3].pos=i;
+			else{
+				while(estudiantes[auxCarr].sigCarr=!-1){
+					auxCarr = estudiantes[auxCarr].sigCarr;
+				}
+				estudiantes[auxCarr].sigCarr = i;
+			}
+		}
+		else if(carrera=="Ing.Catastral"){
+			auxCarr = lisCabeceras[4].pos;
+			if(auxCarr==-1)
+			lisCabeceras[4].pos=i;
+			else{
+				while(estudiantes[auxCarr].sigCarr=!-1){
+					auxCarr = estudiantes[auxCarr].sigCarr;
+				}
+				estudiantes[auxCarr].sigCarr = i;
+			}
+		}
+
 		string hobby;
 		int auxHobby;
 		cout<<"Hobby: "; cin>>hobby;
-		estudiantes[i].hobby = hobby;	
-		
+		estudiantes[i].hobby = hobby;
+
 		if(hobby=="Danza"){
 			auxHobby = lisCabeceras[5].pos;
 			if(auxHobby == -1){
@@ -165,12 +198,12 @@ int main(){
 				lisCabeceras[8].pos = i;
 			}
 		}
-		
+
 		int edad;
 		int auxEdad;
 		cout<<"Edad: "; cin>>edad;
 		estudiantes[i].edad = edad;
-		
+
 		auxEdad = lisCabeceras[9].pos;
 		if(auxEdad==-1){
 			lisCabeceras[9].pos=i;
@@ -179,19 +212,20 @@ int main(){
 				auxEdad=estudiantes[auxEdad].sigEdad;
 			}
 			if(estudiantes[auxEdad].sigEdad==-1)
-				estudiantes[auxEdad].sigEdad = i;
+			estudiantes[auxEdad].sigEdad = i;
 			else{
 				estudiantes[i].sigEdad = estudiantes[auxEdad].sigEdad;
 				estudiantes[auxEdad].sigEdad = i;
 			}
 		}
-
-		cout<<estudiantes[i].edad<<endl;
-		cout<<estudiantes[i].carrera<<endl;
+*/
+	//	cout<<estudiantes[i].edad<<endl;
+		//cout<<estudiantes[i].carrera<<endl;
 	}
-	
+
 	ordenarPorNombre();
+
 	ordenarPorEdad();
-	
+
 	return 0;
 }
