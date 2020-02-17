@@ -38,6 +38,10 @@ void ordenarPorEdad(){
 
 
 int main(){
+	string a = "a";
+	string b = "b";
+
+	std::cout << (a.compare(b)) << '\n';
 
 
 
@@ -88,6 +92,8 @@ int main(){
 		//SE OBTIENE LA PRIMERA POSICION DEL NOMBRE EN CABECERA
 		auxPos = lisCabeceras[0].pos;
 
+		int auxtemp;
+
 		//SI NO HAY NADA DEFINIDO EN LA CABECERA
 		if(auxPos==-1){
 			lisCabeceras[0].pos=i;
@@ -96,17 +102,20 @@ int main(){
 
 		//SI EL VALOR ACTUAL VA DESPUES AL REGISTRADO, SI HAY UNA A Y SE METE UNA B ENTRA
 		}else if((estudiantes[auxPos].nom).compare(nombreEst)<=0){
-			std::cout << "ENTRO" << '\n';
 			lisCabeceras[0].pos=i;
 			estudiantes[i].sigNom=auxPos;
 		//SI EL VALOR ACTUAL VA ANTES AL REGISTRADO SI HAY UNA B Y SE METE UNA A ENTRA
 		//ESTA PARTE ES LA QUE FALLA
 		}else{
-			while((estudiantes[auxPos].nom).compare(nombreEst)<0){
+			std::cout << "ENTRO" << '\n';
+
+			while((estudiantes[auxPos].nom).compare(nombreEst)>0){
+				auxtemp = auxPos;
 				auxPos = estudiantes[auxPos].sigNom;
 			}
-			estudiantes[i].sigNom = estudiantes[auxPos].sigNom;
-			estudiantes[auxPos].sigNom = i;
+
+			estudiantes[i].sigNom = auxPos;
+			estudiantes[auxtemp].sigNom=i;
 
 		}
 
@@ -225,7 +234,7 @@ int main(){
 
 	ordenarPorNombre();
 
-	ordenarPorEdad();
+	//ordenarPorEdad();
 
 	return 0;
 }
