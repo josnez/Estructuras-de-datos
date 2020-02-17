@@ -36,6 +36,16 @@ void ordenarPorEdad(){
 	}
 }
 
+void ordenarPorCarreraSistemas(){
+	int auxNom = lisCabeceras[1].pos;
+
+	cout<<"\n Ordenado por carrera sistemas: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigCarr;
+	}
+}
 
 int main(){
 	string a = "a";
@@ -92,6 +102,7 @@ int main(){
 		//SE OBTIENE LA PRIMERA POSICION DEL NOMBRE EN CABECERA
 		auxPos = lisCabeceras[0].pos;
 
+		//Variable usada para guardar el anterior
 		int auxtemp;
 
 		//SI NO HAY NADA DEFINIDO EN LA CABECERA
@@ -113,29 +124,28 @@ int main(){
 				auxtemp = auxPos;
 				auxPos = estudiantes[auxPos].sigNom;
 			}
-
 			estudiantes[i].sigNom = auxPos;
 			estudiantes[auxtemp].sigNom=i;
 
 		}
 
-/*
+
 		string carrera;
 		int auxCarr;
 		cout<<"Carrera: "; cin>>carrera;
 		estudiantes[i].carrera = carrera;
-		if(carrera=="Ing.Sistemas"){
+		if(carrera=="Sistemas"){
 			auxCarr = lisCabeceras[1].pos;
 			if(auxCarr==-1)
 			lisCabeceras[1].pos=i;
 			else{
-				while(estudiantes[auxCarr].sigCarr=!-1){
-					auxCarr = estudiantes[auxCarr].sigCarr;
-				}
-				estudiantes[auxCarr].sigCarr = i;
+				auxCarr =lisCabeceras[1].pos;
+				estudiantes[i].sigCarr=auxCarr;
+				lisCabeceras[1].pos=i;
+
 			}
 		}
-		else if (carrera == "Ing.Industrial"){
+		else if (carrera == "Industrial"){
 			auxCarr = lisCabeceras[2].pos;
 			if(auxCarr==-1)
 			lisCabeceras[2].pos=i;
@@ -146,7 +156,7 @@ int main(){
 				estudiantes[auxCarr].sigCarr = i;
 			}
 		}
-		else if(carrera=="Ing.Electrica"){
+		else if(carrera=="Electrica"){
 			auxCarr = lisCabeceras[3].pos;
 			if(auxCarr==-1)
 			lisCabeceras[3].pos=i;
@@ -157,7 +167,7 @@ int main(){
 				estudiantes[auxCarr].sigCarr = i;
 			}
 		}
-		else if(carrera=="Ing.Catastral"){
+		else if(carrera=="Catastral"){
 			auxCarr = lisCabeceras[4].pos;
 			if(auxCarr==-1)
 			lisCabeceras[4].pos=i;
@@ -169,6 +179,7 @@ int main(){
 			}
 		}
 
+/*
 		string hobby;
 		int auxHobby;
 		cout<<"Hobby: "; cin>>hobby;
@@ -233,7 +244,7 @@ int main(){
 	}
 
 	ordenarPorNombre();
-
+	ordenarPorCarreraSistemas();
 	//ordenarPorEdad();
 
 	return 0;
