@@ -94,12 +94,12 @@ int main(){
 			estudiantes[i].sigNom = -1;
 			//VERIFICAR LA COMPARACION PUEDE SER UN PROBLEMA
 
-		//SI EL VALOR ACTUAL ES MAYOR AL REGISTRADO, SI HAY UNA W Y SE METE UNA Z ENTRA
+		//SI EL VALOR ACTUAL VA DESPUES AL REGISTRADO, SI HAY UNA A Y SE METE UNA B ENTRA
 		}else if((estudiantes[auxPos].nom).compare(nombreEst)<=0){
 			std::cout << "ENTRO" << '\n';
 			lisCabeceras[0].pos=i;
 			estudiantes[i].sigNom=auxPos;
-		//SI EL VALOR ACTUAL ES MENOR AL REGISTRADO SI HAY UNA W Y SE METE UNA A ENTRA
+		//SI EL VALOR ACTUAL VA ANTES AL REGISTRADO SI HAY UNA B Y SE METE UNA A ENTRA
 		//ESTA PARTE ES LA QUE FALLA
 		}else{
 			while((estudiantes[auxPos].nom).compare(nombreEst)<0){
