@@ -185,10 +185,7 @@ int main(){
 			lisCabeceras[0].pos=i;
 			estudiantes[i].sigNom=auxPos;
 			//SI EL VALOR ACTUAL VA ANTES AL REGISTRADO SI HAY UNA B Y SE METE UNA A ENTRA
-			//ESTA PARTE ES LA QUE FALLA
 		}else{
-			std::cout << "ENTRO" << '\n';
-
 			while((estudiantes[auxPos].nom).compare(nombreEst)>0){
 				auxtemp = auxPos;
 				auxPos = estudiantes[auxPos].sigNom;
@@ -328,4 +325,3 @@ int main(){
 
 	return 0;
 }
-
