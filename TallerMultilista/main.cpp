@@ -27,15 +27,6 @@ void ordenarPorNombre(){
 	}
 }
 
-void ordenarPorEdad(){
-	int auxEdad = lisCabeceras[9].pos;
-	cout<<"\n Ordenado por edad: "<<endl;
-	while(auxEdad =! -1){
-		cout<<estudiantes[auxEdad].edad<<endl;
-		auxEdad = estudiantes[auxEdad].sigEdad;
-	}
-}
-
 void ordenarPorCarreraSistemas(){
 	int auxNom = lisCabeceras[1].pos;
 
@@ -77,12 +68,58 @@ void ordenarPorCarreraCatastral(){
 	}
 }
 
+void ordenarPorHobbyDanza(){
+	int auxNom = lisCabeceras[5].pos;
+
+	cout<<"\n Ordenado por hobby danza: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigHob;
+	}
+}
+void ordenarPorHobbyNatacion(){
+	int auxNom = lisCabeceras[6].pos;
+
+	cout<<"\n Ordenado por hobby natacion: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigHob;
+	}
+}
+void ordenarPorHobbyBeisbol(){
+	int auxNom = lisCabeceras[7].pos;
+
+	cout<<"\n Ordenado por hobby beisbol: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigHob;
+	}
+}
+void ordenarPorHobbyBasket(){
+	int auxNom = lisCabeceras[8].pos;
+
+	cout<<"\n Ordenado por hobby Basket: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigHob;
+	}
+}
+void ordenarPorEdad(){
+	int auxNom = lisCabeceras[9].pos;
+
+	cout<<"\n Ordenado por Edad: ";
+
+	while(auxNom >-1 ){
+		cout<<estudiantes[auxNom].nom << ",";
+		auxNom = estudiantes[auxNom].sigHob;
+	}
+}
+
 int main(){
-	string a = "a";
-	string b = "b";
-
-	std::cout << (a.compare(b)) << '\n';
-
 
 
 	//DECLARACION DE LAS CABEZAS
@@ -141,12 +178,12 @@ int main(){
 			estudiantes[i].sigNom = -1;
 			//VERIFICAR LA COMPARACION PUEDE SER UN PROBLEMA
 
-		//SI EL VALOR ACTUAL VA DESPUES AL REGISTRADO, SI HAY UNA A Y SE METE UNA B ENTRA
+			//SI EL VALOR ACTUAL VA DESPUES AL REGISTRADO, SI HAY UNA A Y SE METE UNA B ENTRA
 		}else if((estudiantes[auxPos].nom).compare(nombreEst)<=0){
 			lisCabeceras[0].pos=i;
 			estudiantes[i].sigNom=auxPos;
-		//SI EL VALOR ACTUAL VA ANTES AL REGISTRADO SI HAY UNA B Y SE METE UNA A ENTRA
-		//ESTA PARTE ES LA QUE FALLA
+			//SI EL VALOR ACTUAL VA ANTES AL REGISTRADO SI HAY UNA B Y SE METE UNA A ENTRA
+			//ESTA PARTE ES LA QUE FALLA
 		}else{
 			std::cout << "ENTRO" << '\n';
 
@@ -209,7 +246,7 @@ int main(){
 			}
 		}
 
-/*
+		//NO QUEDA MUY CLARO COMO SE DEBE DE ORDENAR HOBBY ASI QUE SE ORDENA POR ORDEN DE LLEGADA COMO EN CLASE
 		string hobby;
 		int auxHobby;
 		cout<<"Hobby: "; cin>>hobby;
@@ -268,8 +305,8 @@ int main(){
 				estudiantes[auxEdad].sigEdad = i;
 			}
 		}
-*/
-	//	cout<<estudiantes[i].edad<<endl;
+
+		//	cout<<estudiantes[i].edad<<endl;
 		//cout<<estudiantes[i].carrera<<endl;
 	}
 
@@ -278,6 +315,11 @@ int main(){
 	ordenarPorCarreraIndustrial();
 	ordenarPorCarreraElectrica();
 	ordenarPorCarreraCatastral();
+	ordenarPorHobbyDanza();
+	ordenarPorHobbyNatacion();
+	ordenarPorHobbyBeisbol();
+	ordenarPorHobbyBasket();
+	ordenarPorEdad();
 
 
 	//ordenarPorEdad();
