@@ -326,8 +326,6 @@ int main(){
 	ordenarPorHobbyBasket();
 	ordenarPorEdad();
 
-
-	//ordenarPorEdad();
-
 	return 0;
 }
+

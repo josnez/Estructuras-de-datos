@@ -29,7 +29,7 @@ public:
 	void insertarFinal(T infoNueva); //USADO PARA AGREGAR NUEVOS
 	void insertarInicio(T infoNueva);//USADO PARA AGREGAR UNICAMENTE EL INICIAL
 	void eliminar(int pos);
-	void imprimirLista();
+	T getPos(int pos);
 
 };
 
@@ -103,14 +103,19 @@ void Lista<T>::insertar(T infoNueva, int pos){
 		insertarFinal(infoNueva);
 
 	}else{
-		nodo<T> *modificado; //Se crea el el nuevo nodo
+		nodo<T> *modificado = new nodo <T>; //Se crea el el nuevo nodo
 		nodo<T> *aux ;
 		aux=cab; //El apuntador aux se iguala con el apuntador que apunta a la cabeza de la lista
-		for(int i=1;i<pos-1;i++){ //Se hace avanzar aux desde la cabeza hasta pos-1 nodo existente
+		for(int i=1;i<pos;i++){
 			aux=aux->sig;
 		}
-		modificado = aux->sig;
+
 		modificado->info = infoNueva;
+
+		modificado -> sig = aux->sig;
+		aux->sig = modificado;
+		tam++;
+
 	}
 }
 
@@ -129,7 +134,7 @@ void Lista<T>::eliminar(int pos){
 		aux1 = aux1->sig; //Se avanza aux1 al elemento 1
 		cab = aux1; //La nueva cabeza sera el elemento 1
 		delete aux2; //Se elimina el elemento 0
-		tam--
+		tam--;
 	}else{
 		for(int i=1;i<pos;i++){
 			aux1=aux1->sig;
@@ -146,18 +151,13 @@ void Lista<T>::eliminar(int pos){
 *Se imprime la lista actual
 */
 template <class T>
-void Lista<T>::imprimirLista(){
+T Lista<T>::getPos(int pos){
 	nodo<T> *aux;
 	aux = cab;
-	while(aux->sig != NULL){
-		cout<<aux->info<<endl;
+	for (int i = 0; i < pos; i++) {
 		aux=aux->sig;
 	}
-	//Se imprime el ultimo elemento
-	if(aux->sig == NULL){
-		cout<<aux->info<<endl;
-	}
-
+	return aux->info;
 }
 
 #endif
